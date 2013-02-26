@@ -7,7 +7,7 @@ public class ChatEntryPoint implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        RootPanel.get("appTitle").add(new Label("GWT Chat Demo"));
+        RootPanel.get("appTitle").add(new Label("Welcome to group chat"));
         ContentContainer.setContent(new LoginContent());
     }
 }
