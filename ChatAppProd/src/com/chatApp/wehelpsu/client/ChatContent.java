@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.chatApp.wehelpsu.shared.ChatMessage;
@@ -61,7 +62,12 @@ public class ChatContent implements Content {
     }
 
     private void submitMessage() {
-        final ChatMessage m = new ChatMessage(Cookies.getCookie(LoginContent.COOKIE_NAME), messageTextBox.getText());
+    	String msg= messageTextBox.getText().trim();
+    	if(msg.equals("")||msg==""){
+    		messageTextBox.setText("");
+    		return;
+    	}
+        final ChatMessage m = new ChatMessage(Cookies.getCookie(LoginContent.COOKIE_NAME),msg);
 
         chatMessagesService.addMessage(m, new AsyncCallback<ChatMessage[]>() {
             @Override

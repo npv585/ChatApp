@@ -2,6 +2,7 @@ package com.chatApp.wehelpsu.client;
 
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -44,6 +45,8 @@ public class LoginContent implements Content {
 
     private void login() {
         final String name = nameTextBox.getText();
+        if(name.equals("")||name=="")
+        	Window.alert("Enter a name");
 
         if (name.length() > 0) {
             Cookies.setCookie(COOKIE_NAME, nameTextBox.getText());
